@@ -6,8 +6,9 @@ public class RBTNode extends Node {
 
     private Color color;
 
-    public RBTNode(int value) {
+    public RBTNode(int value, Color color) {
         super(value);
+        this.color = color;
     }
 
     public Color getColor() {

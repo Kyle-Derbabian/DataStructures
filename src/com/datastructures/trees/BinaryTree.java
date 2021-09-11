@@ -18,7 +18,7 @@ public abstract class BinaryTree {
      * @return a <code>Node</code> object representing the root of this <code>BinaryTree</code> instance
      */
     public Node getRoot() {
-        return root;
+        return this.root;
     }
 
     /**
@@ -77,6 +77,10 @@ public abstract class BinaryTree {
             y = y.getParent();
         }
         return y;
+    }
+
+    public String toString() {
+        return this.getClass().getSimpleName() + ", root = " + this.getRoot().getKey();
     }
 
     /**
@@ -184,7 +188,7 @@ public abstract class BinaryTree {
         }
         node1.setParent(node.getParent());
         if (node.getParent() == null) {
-            this.setRoot(node1);
+            this.root = node1;
         } else if (node == node.getParent().getLeft()) {
             node.getParent().setLeft(node1);
         } else {
@@ -199,6 +203,9 @@ public abstract class BinaryTree {
      * @param node a <code>Node</code> object representing the node about which to right-rotate this <code>BinaryTree</code> instance.
      */
     protected void rotateRight(@NotNull Node node) {
+        if (node.getLeft() == null) {
+            throw new NullPointerException("Input node has a null left neighbor.");
+        }
         Node node1 = node.getLeft();
         node.setLeft(node1.getRight());
         if (node1.getRight() != null) {
@@ -206,7 +213,7 @@ public abstract class BinaryTree {
         }
         node1.setParent(node.getParent());
         if (node.getParent() == null) {
-            this.setRoot(node1);
+            this.root = node1;
         } else if (node == node.getParent().getRight()) {
             node.getParent().setRight(node1);
         } else {

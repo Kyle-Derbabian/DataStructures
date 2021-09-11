@@ -16,6 +16,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="DataTypes" level="application" />
+    <orderEntry type="library" name="DataStructures" level="application" />
   </component>
 </module>

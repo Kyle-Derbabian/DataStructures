@@ -7,6 +7,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class BinarySearchTree extends BinaryTree {
 
+//    BSTNode root;
+
     /**
      * Constructs a <code>BinarySearchTree</code> object without a root.
      */
@@ -27,7 +29,15 @@ public class BinarySearchTree extends BinaryTree {
      * @param root a <code>BSTNode</code> object representing the root of this <code>BinarySearchTree</code> instance
      */
     public BinarySearchTree(BSTNode root) {
-        this.setRoot(root);
+        this.root = root;
+    }
+
+    /**
+     * Returns the root of this <code>BinarySearchTree</code> object.
+     * @return a <code>BSTNode</code> object representing the root of this <code>BinarySearchTree</code> instance
+     */
+    public BSTNode getRoot() {
+        return (BSTNode) this.root;
     }
 
     /**
@@ -51,23 +61,27 @@ public class BinarySearchTree extends BinaryTree {
      * @param node a <code>BSTNode</code> object representing the node to insert into this <code>BinarySearchTree</code> instance
      */
     private void treeInsert(BSTNode node) {
-        Node node1 = null;
-        Node node2 = this.getRoot();
-        while (node2 != null) {
-            node1 = node2;
-            if (node.getKey() < node2.getKey()) {
-                node2 = node2.getLeft();
+        if (this.getRoot() == null) {
+            this.root = node;
+            return;
+        }
+        Node parent = null;
+        Node child = this.getRoot();
+        while (child != null) {
+            parent = child;
+            if (node.getKey() < child.getKey()) {
+                child = child.getLeft();
             } else {
-                node2 = node2.getRight();
+                child = child.getRight();
             }
         }
-        node.setParent(node1);
-        if (node1 == null) {
+        node.setParent(parent);
+        if (parent == null) {
             this.setRoot(node);
-        } else if (node.getKey() < node1.getKey()) {
-            node1.setLeft(node);
+        } else if (node.getKey() < parent.getKey()) {
+            parent.setLeft(node);
         } else {
-            node1.setRight(node);
+            parent.setRight(node);
         }
     }
 
