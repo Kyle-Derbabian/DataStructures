@@ -162,7 +162,7 @@ public abstract class BinaryTree {
      */
     protected void transplant(@NotNull Node replacee, Node replacement) {
         if (replacee.getParent() == null) {
-            this.setRoot(replacement);
+            this.root = replacement;
         } else if (replacee == replacee.getParent().getLeft()) {
             replacee.getParent().setLeft(replacement);
         } else {
@@ -173,54 +173,21 @@ public abstract class BinaryTree {
         }
     }
 
+    public abstract void insert(Integer key);
+
+    public abstract void delete(Integer key);
+
     /**
      * Left-rotates this <code>BinaryTree</code> object at the node <code>node</code>.
      * @param node a <code>Node</code> object representing the node about which to left-rotate this <code>BinaryTree</code> instance.
      */
-    protected void rotateLeft(@NotNull Node node) {
-        if (node.getRight() == null) {
-            throw new NullPointerException("Input node has a null right neighbor.");
-        }
-        Node node1 = node.getRight();
-        node.setRight(node1.getLeft());
-        if (node1.getLeft() != null) {
-            node1.getLeft().setParent(node);
-        }
-        node1.setParent(node.getParent());
-        if (node.getParent() == null) {
-            this.root = node1;
-        } else if (node == node.getParent().getLeft()) {
-            node.getParent().setLeft(node1);
-        } else {
-            node.getParent().setRight(node1);
-        }
-        node1.setLeft(node);
-        node.setParent(node1);
-    }
+    protected abstract void rotateLeft(@NotNull Node node);
 
     /**
      * Right-rotates this <code>BinaryTree</code> object at the node <code>node</code>.
      * @param node a <code>Node</code> object representing the node about which to right-rotate this <code>BinaryTree</code> instance.
      */
-    protected void rotateRight(@NotNull Node node) {
-        if (node.getLeft() == null) {
-            throw new NullPointerException("Input node has a null left neighbor.");
-        }
-        Node node1 = node.getLeft();
-        node.setLeft(node1.getRight());
-        if (node1.getRight() != null) {
-            node1.getRight().setParent(node);
-        }
-        node1.setParent(node.getParent());
-        if (node.getParent() == null) {
-            this.root = node1;
-        } else if (node == node.getParent().getRight()) {
-            node.getParent().setRight(node1);
-        } else {
-            node.getParent().setLeft(node1);
-        }
-        node1.setRight(node);
-        node.setParent(node1);
-    }
+    protected abstract void rotateRight(@NotNull Node node);
+
 
 }

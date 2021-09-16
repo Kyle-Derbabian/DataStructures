@@ -2,20 +2,20 @@ package com.datastructures.trees;
 
 public abstract class Node {
 
-    protected int key;
+    protected Integer key;
     protected Node parent;
     protected Node left;
     protected Node right;
 
-    public Node(int key) {
+    public Node(Integer key) {
         this.key = key;
     }
 
-    public int getKey() {
+    public Integer getKey() {
         return key;
     }
 
-    public void setKey(int key) {
+    public void setKey(Integer key) {
         this.key = key;
     }
 

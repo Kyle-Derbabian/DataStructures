@@ -4,8 +4,25 @@ import com.datastructures.trees.Node;
 
 public class BSTNode extends Node {
 
-    public BSTNode(int key) {
+    public static final BSTNode sentinel = new BSTNode(null);
+
+    public BSTNode(Integer key) {
         super(key);
+    }
+
+    @Override
+    public BSTNode getParent() {
+        return (BSTNode) parent;
+    }
+
+    @Override
+    public BSTNode getLeft() {
+        return (BSTNode) left;
+    }
+
+    @Override
+    public BSTNode getRight() {
+        return (BSTNode) right;
     }
 
     @Override
