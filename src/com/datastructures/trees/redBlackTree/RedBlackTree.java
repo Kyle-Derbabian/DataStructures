@@ -208,6 +208,7 @@ public class RedBlackTree extends BinaryTree {
                 }
             }
         }
+        x.setColor(Color.BLACK);
     }
 
     protected void transplant(@NotNull Node u, Node v) {
